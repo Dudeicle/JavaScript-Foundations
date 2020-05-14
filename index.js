@@ -135,24 +135,29 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 
 function variableInterestRate () {
     const name = "Brian"
-    const principal = "200000";
-    const yearlyinterestRate = "0.05";
-    const years = "30";
-    const monthlyInterestRate = (yearlyinterestRate/12);
-    const periods = (years*12);
-    let numerator = principal * (monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods));
-    let denominator = Math.pow((1 + monthlyInterestRate),periods)-1;
-    monthlyRate = numerator / denominator;
+    const principal = 200000;
+    let yearlyinterestRate = 0.04;
+    const years = 30;
+    yearlyinterestRate = yearlyinterestRate-0.02;
     
-    for (i = monthlyRate; i <= monthlyRate*1.5; i+monthlyRate*0.05) {
-        i+monthlyRate*0.05;
+    for (i = 0; i < 10; i++) {
+        let monthlyInterestRate = (yearlyinterestRate/12);
+        const periods = (years*12);
+        let numerator = principal * (monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods));
+        let denominator = Math.pow((1 + monthlyInterestRate),periods)-1;
+        monthlyRate = numerator / denominator;
+
+        console.log(monthlyRate);
+
+        yearlyinterestRate = Math.round((yearlyinterestRate + .005) * 1000)/ 1000;
+
+        console.log(yearlyinterestRate);
+
+        
     }
 
-    // return console.log("Brian, with an interest rate of", adjustedInterest, "your monthly rate is $", adjustedRate);
 }
-
-console.log(variableInterestRate());
-
+console.log(variableInterestRate("Brian, with an interest rate of ", yearlyinterestRate, ", your monthly rate is ", monthlyRate));
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
 
